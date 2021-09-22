@@ -34,6 +34,21 @@ public class ListaEstatica {
         return index;
     }
 
+    // Retorna com sujeira.
+//    public boolean removeByIndex(int index) {
+//        if (index < 0 || index >= numElement) {
+//            return false;
+//        }
+//        else {
+//            for (int i = index; i < numElement-1; i++) {
+//                vect[i] = vect[i+1];
+//            }
+//            numElement--;
+//            return true;
+//        }
+//    }
+
+    // Retorna limpo.
     public boolean removeByIndex(int index) {
         if (index < vect.length) {
             numElement--;
