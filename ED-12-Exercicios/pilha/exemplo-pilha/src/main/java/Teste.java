@@ -2,44 +2,17 @@ import java.util.Locale;
 
 public class Teste {
     public static void main(String[] args) {
+        int[] vetor1 = {1, 3, 3, 1};
+        int[] vetor2 = {10, 20, 30, 40};
+        int[] vetor3 = {1, 2, 3, 2, 1};
         /* 1 3 3 1*/
-        Pilha exemplo1 = new Pilha(4);
-        exemplo1.push(1);
-        exemplo1.push(3);
-        exemplo1.push(3);
-        exemplo1.push(1);
 
-        System.out.println(ehPalindromo(exemplo1.getPilha()));
 
-        /* 10 20 30 40*/
-        Pilha exemplo2 = new Pilha(4);
-        exemplo2.push(10);
-        exemplo2.push(20);
-        exemplo2.push(30);
-        exemplo2.push(40);
 
-        System.out.println(ehPalindromo(exemplo2.getPilha()));
+        System.out.println(ehPalindromo(vetor1));
+        System.out.println(ehPalindromo(vetor2));
+        System.out.println(ehPalindromo(vetor3));
 
-        /* 10 20 30 30 20 10 */
-        Pilha exemplo3 = new Pilha(6);
-        exemplo3.push(10);
-        exemplo3.push(20);
-        exemplo3.push(30);
-        exemplo3.push(30);
-        exemplo3.push(20);
-        exemplo3.push(10);
-
-        System.out.println(ehPalindromo(exemplo3.getPilha()));
-
-        /* 1 2 3 2 1 */
-        Pilha exemplo4 = new Pilha(5);
-        exemplo4.push(1);
-        exemplo4.push(2);
-        exemplo4.push(3);
-        exemplo4.push(2);
-        exemplo4.push(1);
-
-        System.out.println(ehPalindromo(exemplo4.getPilha()));
 
         converterDecimalParaBinario(9);
         converterDecimalParaBinario(12);
@@ -65,18 +38,38 @@ public class Teste {
 
     }
 
-    public static boolean ehPalindromo(int[] vetor) {
-        Pilha aux = new Pilha(vetor.length);
+//    public static boolean ehPalindromo(int[] vetor) {
+//        Pilha aux = new Pilha(vetor.length);
+//
+//        for (int i = 0; i < vetor.length; i++) {
+//            aux.push(vetor[i]);
+//        }
+//
+//        for (int i = 0; i < vetor.length; i++) {
+//            if (vetor[i] != aux.peek()) {
+//                return false;
+//            }
+//            aux.pop();
+//        }
+//        return true;
+//    }
 
-        for (int i = 0; i < vetor.length; i++) {
+    public static boolean ehPalindromo(int[] vetor){
+        Pilha aux = new Pilha(vetor.length / 2);
+        int i = 0;
+
+        for (i = 0; i < vetor.length / 2; i++){
             aux.push(vetor[i]);
         }
 
-        for (int i = 0; i < vetor.length; i++) {
-            if (vetor[i] != aux.peek()) {
+        if (vetor.length % 2 != 0){
+            i++;
+        }
+
+        for (;i < vetor.length; i++){
+            if (vetor[i] != aux.pop()) {
                 return false;
             }
-            aux.pop();
         }
         return true;
     }
@@ -113,15 +106,19 @@ public class Teste {
     }
 
     public static void converterDecimalParaBinario(int decimal) {
-        Pilha aux = new Pilha(decimal);
 
+        Pilha aux = new Pilha((int)(Math.log(decimal) / Math.log(2)) + 1);
+        int num = decimal;
         /* cria um for que decrementa o valor pela metade */
-        for (int i = decimal; i > 0; i = i / 2) {
-            /* pega o resto da divisão e coloca dentro da pilha auxiliar */
-            aux.push(i % 2);
+        while (num != 0){
+            aux.push(num % 2);
+
+            num /= 2;
         }
 
-        /* exibe os valores da pilha */
-        aux.exibe();
+        while (!aux.isEmpty()){
+            System.out.print(aux.pop());
+        }
+        System.out.println("");
     }
 }
