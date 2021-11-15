@@ -63,10 +63,10 @@ public class TesteGravaArquivoTxt {
         String corpo;
         for (Filme filme : lista) {
             corpo = "02";
-            corpo += String.format("%20.20s",filme.getNome());
-            corpo += String.format("%10.10s",filme.getGenero());
-            corpo += String.format("%20.20s",filme.getDiretor());
-            corpo += String.format("%.1f",filme.getNota());
+            corpo += String.format("%-20.20s",filme.getNome());
+            corpo += String.format("%-10.10s",filme.getGenero());
+            corpo += String.format("%-20.20s",filme.getDiretor());
+            corpo += String.format("%04.1f",filme.getNota());
             corpo += String.format("%-10.10s", filme.getLancamento());
             gravaRegistro(nomeArq,corpo);
             contaRegistro++;
