@@ -2,9 +2,22 @@ public class ContaBancaria {
     private Integer numero;
     private Double saldo;
 
-    public ContaBancaria(Integer numero, Double saldo) {
+    public ContaBancaria(Integer numero) {
         this.numero = numero;
-        this.saldo = saldo;
+        this.saldo = 0.0;
+    }
+
+    public Boolean debitar(Double valor){
+        if (valor > this.saldo){
+            System.out.println("Saldo insuficiente");
+            return false;
+        }
+        this.saldo -= valor;
+        return true;
+    }
+
+    public void depositar(Double valor){
+        this.saldo += valor;
     }
 
     public Integer getNumero() {

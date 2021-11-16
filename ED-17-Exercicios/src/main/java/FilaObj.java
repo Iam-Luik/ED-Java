@@ -33,15 +33,17 @@ public class FilaObj<T> {
         return this.fila[0];
     }
 
-    T poll(){
-        if (isEmpty()){
-            return null;
+    public T poll() {
+        T primeiro = peek(); // salva o primeiro elemento da fila
+
+        if (!isEmpty()) { // se a fila não está vazia
+            // faz a fila andar
+            for (int i = 0; i < tamanho - 1; i++) {
+                fila[i] = fila[i + 1];
+            }
+            fila[tamanho - 1] = null;    // limpa o último cara da fila
+            tamanho--;                 // decrementa tamanho
         }
-        T primeiro = this.fila[0];
-        for (int i = 1; i < tamanho; i++){
-            this.fila[i - 1] = this.fila[i];
-        }
-        tamanho--;
         return primeiro;
     }
 
