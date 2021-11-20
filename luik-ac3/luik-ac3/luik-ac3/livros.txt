@@ -1,0 +1,5 @@
+00LIVRO19-11-2021 18:50:5801
+0200001Harry Potter 1                0000050,99Fantasia       JK Rowling          0000283
+0200553Cronicas de nárnia            0000048,25Fantasia       Lewins              0000895
+0216120Harry Potter 2                0000064,45Fantasia       JK Rowling          0000201
+010000000003
